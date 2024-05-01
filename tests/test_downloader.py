@@ -14,6 +14,9 @@ def test_get_tile_png():
             content=b"some image content",
         )
 
+        # set the layer to download
+        downloader.set_layer("default")
+        
         # Call the method we are testing
         result = downloader.get_tile_png(17, 65521, 43969)
 

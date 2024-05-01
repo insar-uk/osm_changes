@@ -10,6 +10,7 @@ import os
 NOTE: The older layers have a different color scheme, so the detector will not work with them until the color changes are mapped out and implemented (e.g. by changing detector properties according to which layers are selected).
 """
 layer_urls: dict[str, str] = {
+    "default": "https://tile.openstreetmap.org/",
     "202310": "https://os.openstreetmap.org/layer/gb_os_om_local_2023_10/",
     "202304": "https://os.openstreetmap.org/layer/gb_os_om_local_2023_04/",
     "202210": "https://os.openstreetmap.org/layer/gb_os_om_local_2022_10/",

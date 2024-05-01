@@ -83,5 +83,5 @@ python -m osm_changes
 
 ```bash
 coverage run --source osm_changes --branch -m pytest
-coverage report -m
+coverage report -m --format=markdown > coverage_report.md
 ```
