@@ -2,10 +2,9 @@ import requests
 from osm_changes.config import Config, TileFilepath
 from datetime import datetime
 from osm_changes.types import Coordinate
-import logging
+from osm_changes.logger import logger
 import os
 
-log = logging.getLogger(__name__)
 
 """
 NOTE: The older layers have a different color scheme, so the detector will not work with them until the color changes are mapped out and implemented (e.g. by changing detector properties according to which layers are selected).
@@ -63,7 +62,7 @@ class Downloader:
         if self.layer is None:
             raise Exception("Layer not set, use this.set_layer(layer_name) to set the layer (where layer_name is a string YYYYMM, e.g. '202310' for October 2023)")
         url = f"{self.tile_url}{zoom}/{x}/{y}.png"
-        log.info(f"Downloading tile {zoom}/{x}/{y} from {url}")
+        logger.info(f"Downloading tile {zoom}/{x}/{y} from {url}")
         response = requests.get(url, headers=self.headers)
         # check if the request was successful and bytes were returned
         response.raise_for_status()
@@ -89,6 +88,7 @@ class Downloader:
 
         # skip if the file already exists
         if os.path.exists(filepath):
+            logger.debug(f"File {filepath} already exists, skipping")
             return
         bytes = self.get_tile_png(zoom, x, y)
         if bytes:

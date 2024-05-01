@@ -12,6 +12,7 @@
     "layer1": "201610",
     "layer2": "202310",
     "initial_label": "Nothing",
-    "final_label": "Building"
+    "final_label": "Building",
+    "log_level": "INFO"
   }
   

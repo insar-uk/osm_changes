@@ -4,6 +4,7 @@ from osm_changes.types import Color, Image, Coordinate
 from osm_changes.config import Config, TileFilepath, SUPPORTED_OUTPUTS
 from osm_changes.images import bytes_to_image
 import osm_changes.display
+from osm_changes.logger import logger
 import numpy as np
 import os
 
@@ -144,10 +145,12 @@ class Detector:
                 self.layerName, tile[0], tile[1], self.zoom, output=self.output
             )()
             if not self.overwrite and os.path.exists(new_filepath):
+                logger.debug(f"File {new_filepath} already exists, skipping")
                 continue
             # make output directory if it does not exist
             os.makedirs(os.path.dirname(new_filepath), exist_ok=True)
             detection_mask = self.detect_changes_in_tile(tile)
+            logger.info(f"Saving detection mask to {new_filepath}")
 
             # save the detection mask
             if self.output == "png":

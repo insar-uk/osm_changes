@@ -1,15 +1,17 @@
 """Load configuration file"""
 
 import os
-import logging
-
-# get package logger
-log = logging.getLogger(__name__)
+from osm_changes.logger import logger, configure_logger
 
 SUPPORTED_OUTPUTS = ["png", "tiff"]
 
 
 class TileFilepath:
+    """
+    Used to automatically generate filepaths for tiles. 
+    
+    The output_dir and config_cwd must be set by initialising a Config() object before using this class.
+    """
     output_dir: str | None = None
     config_cwd: str | None = None
 
@@ -56,6 +58,8 @@ class Config:
         self.filepath = os.path.join(
             os.path.dirname(os.path.abspath(__file__)), "config", "default.json"
         )
+        # configure logger
+        configure_logger()
 
         self.load()
         self.init_filepaths()
@@ -73,6 +77,13 @@ class Config:
 
         with open(self.filepath, "r") as file:
             self.data = json.load(file)
+            keys = self.data.keys()
+
+            if "log_level" in keys:
+                lvl = self.data["log_level"]
+                configure_logger(lvl)
+                logger.info(f"Log level set to {lvl}")
+
             self.config = self.data["config"]
             self.zoom = self.data["zoom"]
 
@@ -104,7 +115,7 @@ class Config:
             # check the output directory exists
             if not os.path.exists(self._output_dir):
                 os.makedirs(self._output_dir)
-                log.info(f"Created output directory {self._output_dir}")
+                logger.info(f"Created output directory {self._output_dir}")
 
     def init_filepaths(self):
         TileFilepath.output_dir = self._output_dir
