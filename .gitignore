@@ -1,0 +1,21 @@
+# virtualenv
+.venv
+venv
+
+# Build artifacts
+build/*
+*__pycache__*
+*.egg-info
+*.pyc
+
+# pytest
+.pytest_cache
+
+# IDE
+.vscode/
+scratch/
+
+# output
+output/
+*.tif
+
