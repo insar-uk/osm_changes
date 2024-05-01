@@ -5,6 +5,14 @@ A simple tool to compare changes in OS OpenData maps between two dates.
 See the tiles and layers [here](https://os.openstreetmap.org/). This is where data is sourced currently.
 
 
+For example, here is a binary imaging showing new buildings constructed between 201610 and 202310 in Swindon, UK according to the maps.
+<!-- Example jpg: https://github.com/insar-uk/osm_changes/blob/main/example.jpg-->
+
+![Example](https://raw.githubusercontent.com/insar-uk/osm_changes/main/example.jpg)
+
+There are a few artefacts in the output... the next step is to use a 'bwareaopen' Python equivalent to remove small areas of noisyness mainly around labels.
+
+
 ## Configuration:
 
 Configuration is handled using the config/config.json file. Options are:
