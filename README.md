@@ -17,6 +17,7 @@ There are a few artefacts in the output... the next step is to use a 'bwareaopen
 
 Configuration is handled using the config/config.json file. Options are:
 
+``` json
 {
     "config": "default",
     "output": "tiff",
@@ -28,12 +29,12 @@ Configuration is handled using the config/config.json file. Options are:
     "max_longitude": -1.71,
     "height": 1000,
     "width": 1000,
-
     "layer1": "201610",
     "layer2": "202310",
     "initial_label": "Nothing",
     "final_label": "Building"
   }
+```
 
 ### Options:
 - output: The format of the output file.
