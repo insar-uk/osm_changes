@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 call C:\Users\user\Documents\venv\osm_change\Scripts\activate.bat
 
-cd C:\Users\user\Documents\osm_changes_modified
+cd C:\Users\user\Documents\osm_changes
 
 rem Set path to desired python executable
 set "python_executable=C:\Users\user\AppData\Local\Programs\Python\Python311\python.exe""
